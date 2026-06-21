@@ -87,7 +87,7 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="mt-5 text-sm leading-6 text-neutral-500">
-                  The visual language of the site is intentionally closer to an engineering dashboard than a personal landing page.
+                  Each project exposes the path from product workflow to backend state, runtime execution, deployment, and proof through traces, evals, metrics, or screenshots.
                 </p>
               </div>
             </div>
@@ -183,13 +183,8 @@ export default function Home() {
             Target roles: {resumeConfig.targetRoles.join(" · ")}
           </h2>
           <p className="mt-5 max-w-3xl text-base leading-8 text-neutral-400">
-            The resume section is folded into the one-page portfolio so hiring context stays close to the project proof. The final PDF download will be enabled after the resume file is uploaded.
+            A concise snapshot of my backend, platform, and applied AI experience across ClaimFlow AI, RunState, and SpinUp.
           </p>
-          {!resumeConfig.isAvailable ? (
-            <p className="mt-4 max-w-3xl rounded-2xl border border-white/10 bg-neutral-950/60 p-4 text-sm leading-6 text-neutral-500">
-              {resumeConfig.note}
-            </p>
-          ) : null}
           <div className="mt-7 flex flex-wrap gap-3">
             {resumeConfig.isAvailable ? <Button href={resumeConfig.pdfPath} label="Download Resume" variant="primary" /> : null}
             <Button href="mailto:ritikag5533@gmail.com" label="Contact" variant={resumeConfig.isAvailable ? "secondary" : "primary"} />
