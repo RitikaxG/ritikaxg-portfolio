@@ -14,16 +14,16 @@ const geistMono = Geist_Mono({
 });
 
 const navItems = [
-  { label: "Projects", href: "/projects" },
-  { label: "Engineering Journals", href: "/journals" },
-  { label: "About", href: "/about" },
-  { label: "Resume", href: "/resume" },
+  { label: "About", href: "/#about" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Journals", href: "/#journals" },
+  { label: "Resume", href: "/#resume" },
 ];
 
 export const metadata: Metadata = {
   title: "Ritika Gupta | Backend / Platform / Applied AI Engineer",
   description:
-    "Production-style systems portfolio covering backend architecture, cloud infrastructure, GitOps, and governed AI workflows.",
+    "A systems portfolio covering backend architecture, platform engineering, cloud runtime orchestration, GitOps, and governed AI workflows.",
 };
 
 export default function RootLayout({
@@ -34,22 +34,22 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
-        <div className="min-h-screen overflow-hidden bg-slate-950 text-slate-100">
-          <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
+        <div className="min-h-screen bg-neutral-950 text-neutral-100">
+          <header className="sticky top-0 z-50 border-b border-white/[0.07] bg-neutral-950/75 backdrop-blur-2xl">
             <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
               <Link href="/" className="flex items-center gap-3">
-                <span className="flex h-9 w-9 items-center justify-center rounded-2xl border border-cyan-300/30 bg-cyan-300/10 font-mono text-sm font-semibold text-cyan-200">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] font-mono text-xs font-semibold text-white">
                   RG
                 </span>
-                <span className="hidden text-sm font-semibold tracking-wide text-white sm:block">Ritika Gupta</span>
+                <span className="text-sm font-semibold tracking-wide text-white">Ritika Gupta</span>
               </Link>
 
-              <div className="hidden items-center gap-1 md:flex">
+              <div className="hidden rounded-full border border-white/10 bg-white/[0.04] p-1 shadow-2xl shadow-black/30 md:flex">
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="rounded-full px-4 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white"
+                    className="rounded-full px-4 py-2 text-sm text-neutral-300 transition hover:bg-white/10 hover:text-white"
                   >
                     {item.label}
                   </Link>
@@ -60,19 +60,26 @@ export default function RootLayout({
                 href="https://github.com/RitikaxG"
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-slate-200 transition hover:border-cyan-300/50 hover:bg-cyan-300/10 hover:text-cyan-100"
+                className="rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-sm font-medium text-neutral-200 transition hover:border-white/30 hover:bg-white/10 hover:text-white"
               >
                 GitHub
               </a>
             </nav>
           </header>
+
           {children}
-          <footer className="border-t border-white/10 px-5 py-10 sm:px-8">
-            <div className="mx-auto flex max-w-7xl flex-col gap-4 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
+
+          <footer className="border-t border-white/[0.07] px-5 py-10 sm:px-8">
+            <div className="mx-auto flex max-w-7xl flex-col gap-4 text-sm text-neutral-500 md:flex-row md:items-center md:justify-between">
               <p>Built as a systems portfolio for backend, platform, and applied AI engineering roles.</p>
-              <a className="hover:text-cyan-200" href="https://github.com/RitikaxG" target="_blank" rel="noreferrer">
-                GitHub profile
-              </a>
+              <div className="flex flex-wrap gap-4">
+                <a className="transition hover:text-white" href="https://github.com/RitikaxG" target="_blank" rel="noreferrer">
+                  GitHub
+                </a>
+                <a className="transition hover:text-white" href="mailto:ritikag5533@gmail.com">
+                  Contact
+                </a>
+              </div>
             </div>
           </footer>
         </div>

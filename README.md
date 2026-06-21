@@ -1,40 +1,26 @@
 # Ritika Gupta Portfolio
 
-Production-style systems portfolio for backend, platform, and applied AI engineering roles.
+One-page systems portfolio with separate project case-study pages.
+
+## Structure
+
+- `/` — one-page portfolio: hero, about, offers, featured systems, journals, resume/contact
+- `/projects/claimflow-ai` — ClaimFlow AI case study
+- `/projects/runstate` — RunState case study
+- `/projects/spinup` — SpinUp case study
+
+The design is intentionally dark, monochrome, and dashboard-like so the site feels like an engineering case-study portfolio instead of a generic personal landing page.
 
 ## Stack
 
 - Next.js App Router
 - TypeScript
 - Tailwind CSS
-- Static content-first portfolio structure
+- Static content-first project data
 - Vercel-ready deployment
-
-## Current phase
-
-Phase 1 foundation is in progress.
-
-Implemented so far:
-
-- Dark technical dashboard-style theme
-- Global navigation and footer
-- Homepage hero positioning
-- Featured systems section for ClaimFlow AI, RunState, and SpinUp
-- Systems skills map
-- Engineering journals placeholder
-- About and resume target sections
-
-Next phases:
-
-- Add separate `/projects`, `/journals`, `/about`, and `/resume` routes
-- Add reusable components and static project data files
-- Add individual project case-study pages
-- Add proof links, architecture images, screenshots, and resume download
 
 ## Development
 
 ```bash
 npm run dev
 ```
-
-Open `http://localhost:3000`.
