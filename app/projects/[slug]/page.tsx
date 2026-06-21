@@ -2,7 +2,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { ProofGallery } from "@/components/projects/ProofGallery";
 import { getProject, projects } from "@/content/projects";
+import { projectProofAssets } from "@/content/proofAssets";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -41,6 +43,9 @@ export default async function ProjectCaseStudyPage({ params }: { params: Promise
   if (!project) {
     notFound();
   }
+
+  const proof = projectProofAssets[project.slug];
+  const proofLinks = proof?.links.length ? proof.links : project.caseStudy.proofLinks;
 
   return (
     <main className="px-5 py-12 sm:px-8 lg:py-20">
@@ -99,6 +104,8 @@ export default async function ProjectCaseStudyPage({ params }: { params: Promise
             ))}
           </div>
         </section>
+
+        {proof ? <ProofGallery images={proof.images} /> : null}
 
         <section className="mt-8 grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
           <section className="soft-card rounded-[2rem] p-6 md:p-8">
@@ -167,12 +174,12 @@ export default async function ProjectCaseStudyPage({ params }: { params: Promise
           <section className="soft-card rounded-[2rem] p-6 md:p-8">
             <SectionLabel>Proof links</SectionLabel>
             <div className="mt-5 flex flex-wrap gap-3">
-              {project.caseStudy.proofLinks.map((link, index) => (
+              {proofLinks.map((link, index) => (
                 <Button key={link.label} href={link.href} label={link.label} variant={index === 0 ? "primary" : "secondary"} />
               ))}
             </div>
             <p className="mt-5 text-sm leading-6 text-neutral-500">
-              Placeholder links will be replaced with architecture images, screenshots, demo videos, and engineering journals during the polish pass.
+              Proof links connect to the source repos, demos, architecture assets, screenshots, and engineering journals used to build this case study.
             </p>
           </section>
         </section>
