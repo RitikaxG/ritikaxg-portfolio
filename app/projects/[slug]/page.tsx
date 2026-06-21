@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/Badge";
@@ -5,9 +6,51 @@ import { Button } from "@/components/ui/Button";
 import { ProofGallery } from "@/components/projects/ProofGallery";
 import { getProject, projects } from "@/content/projects";
 import { projectProofAssets } from "@/content/proofAssets";
+import { absoluteUrl } from "@/lib/site";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getProject(slug);
+
+  if (!project) {
+    return {};
+  }
+
+  const title = `${project.title} Case Study`;
+  const description = project.subtitle;
+  const url = absoluteUrl(`/projects/${project.slug}`);
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/projects/${project.slug}`,
+    },
+    openGraph: {
+      type: "article",
+      url,
+      title,
+      description,
+      images: [
+        {
+          url: "/opengraph-image",
+          width: 1200,
+          height: 630,
+          alt: `${project.title} case study`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/opengraph-image"],
+    },
+  };
 }
 
 function SectionLabel({ children }: { children: string }) {

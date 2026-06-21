@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
+import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -21,9 +22,55 @@ const navItems = [
 ];
 
 export const metadata: Metadata = {
-  title: "Ritika Gupta | Backend / Platform / Applied AI Engineer",
-  description:
-    "A systems portfolio covering backend architecture, platform engineering, cloud runtime orchestration, GitOps, and governed AI workflows.",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.title,
+    template: "%s | Ritika Gupta",
+  },
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.author, url: siteConfig.github }],
+  creator: siteConfig.author,
+  publisher: siteConfig.author,
+  keywords: siteConfig.keywords,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "/",
+    siteName: siteConfig.name,
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Ritika Gupta systems portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: ["/opengraph-image"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: "/icon",
+  },
 };
 
 export default function RootLayout({
@@ -57,7 +104,7 @@ export default function RootLayout({
               </div>
 
               <a
-                href="https://github.com/RitikaxG"
+                href={siteConfig.github}
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-sm font-medium text-neutral-200 transition hover:border-white/30 hover:bg-white/10 hover:text-white"
@@ -73,10 +120,10 @@ export default function RootLayout({
             <div className="mx-auto flex max-w-7xl flex-col gap-4 text-sm text-neutral-500 md:flex-row md:items-center md:justify-between">
               <p>Built as a systems portfolio for backend, platform, and applied AI engineering roles.</p>
               <div className="flex flex-wrap gap-4">
-                <a className="transition hover:text-white" href="https://github.com/RitikaxG" target="_blank" rel="noreferrer">
+                <a className="transition hover:text-white" href={siteConfig.github} target="_blank" rel="noreferrer">
                   GitHub
                 </a>
-                <a className="transition hover:text-white" href="mailto:ritikag5533@gmail.com">
+                <a className="transition hover:text-white" href={`mailto:${siteConfig.email}`}>
                   Contact
                 </a>
               </div>
