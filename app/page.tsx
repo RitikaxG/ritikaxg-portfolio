@@ -164,12 +164,12 @@ export default function Home() {
           />
           <div className="mt-10 grid gap-5 md:grid-cols-2">
             {journals.map((journal) => (
-              <article key={journal.title} className="soft-card rounded-[2rem] p-6">
+              <a key={journal.title} href={journal.href} target="_blank" rel="noreferrer" className="soft-card group rounded-[2rem] p-6 transition hover:border-white/18 hover:bg-white/[0.055]">
                 <p className="font-mono text-xs uppercase tracking-[0.24em] text-neutral-500">Raw engineering journal</p>
                 <h3 className="mt-4 text-2xl font-semibold text-white">{journal.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-neutral-400">{journal.scope}</p>
-                <p className="mt-5 text-sm text-neutral-600">Link placeholder</p>
-              </article>
+                <p className="mt-5 text-sm text-neutral-500 transition group-hover:text-white">Open journal →</p>
+              </a>
             ))}
           </div>
         </div>
