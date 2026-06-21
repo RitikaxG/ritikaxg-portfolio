@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 const variantStyles = {
-  primary: "bg-cyan-300 text-slate-950 hover:bg-cyan-200",
-  secondary: "border border-white/15 text-white hover:border-cyan-300/40 hover:bg-white/10",
-  ghost: "border border-white/10 text-slate-300 hover:border-violet-300/40 hover:bg-white/10 hover:text-white",
+  primary: "bg-neutral-100 text-neutral-950 hover:bg-white",
+  secondary: "border border-white/15 bg-white/[0.035] text-neutral-200 hover:border-white/30 hover:bg-white/10 hover:text-white",
+  ghost: "text-neutral-400 hover:text-white",
 };
 
 type ButtonProps = {
@@ -13,11 +13,11 @@ type ButtonProps = {
 };
 
 export function Button({ href, label, variant = "secondary" }: ButtonProps) {
-  const className = `rounded-full px-5 py-3 text-sm font-semibold transition ${variantStyles[variant]}`;
+  const className = `inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition ${variantStyles[variant]}`;
 
-  if (href.startsWith("http") || href.startsWith("mailto:")) {
+  if (href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("#")) {
     return (
-      <a href={href} target="_blank" rel="noreferrer" className={className}>
+      <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noreferrer" : undefined} className={className}>
         {label}
       </a>
     );

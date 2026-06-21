@@ -1,57 +1,113 @@
-import { journals } from "@/content/journals";
 import { projects } from "@/content/projects";
+import { journals } from "@/content/journals";
 import { ProjectCard } from "@/components/projects/ProjectCard";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
-const systemPath = ["Product Workflow", "Backend Services", "Workers / Runtime", "Infra / GitOps", "Observability / Evals"];
+const systemPath = ["Product workflow", "Backend services", "Workers / runtime", "Infra / GitOps", "Observability / evals"];
 
-const skills = [
-  "API design",
-  "State machines",
-  "Worker pipelines",
+const offers = [
+  {
+    title: "Backend systems",
+    copy: "APIs, state machines, worker pipelines, Postgres models, Redis coordination, incidents, notification logs, and durable workflow state.",
+    points: ["Go and TypeScript backends", "Worker/event-driven systems", "Auth, RBAC, state modeling"],
+  },
+  {
+    title: "Platform engineering",
+    copy: "Dockerized local systems, Kubernetes manifests, GitOps workflows, External Secrets, ingress/TLS, Prometheus metrics, and autoscaling.",
+    points: ["Docker + Compose", "Kubernetes + ArgoCD", "Metrics + HPA"],
+  },
+  {
+    title: "Applied AI workflows",
+    copy: "RAG, agents, memory, human review, evals, traces, AI gateway logs, and deterministic controls around model behavior.",
+    points: ["Policy-grounded RAG", "Guarded tools", "Evals + observability"],
+  },
+];
+
+const strengths = [
+  "Backend architecture",
+  "Worker systems",
   "Postgres modeling",
   "Redis coordination",
-  "Docker",
-  "Kubernetes",
-  "GitOps",
-  "RAG",
-  "Agent tools",
-  "Workflow memory",
-  "Evals and traces",
+  "Cloud runtime orchestration",
+  "Kubernetes / GitOps",
+  "Applied AI workflow design",
+  "RAG / agents / memory / evals",
 ];
 
 export default function Home() {
   return (
     <main>
-      <section className="px-5 py-20 sm:px-8 lg:py-28">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
-          <div>
-            <Badge>Backend / Platform / Applied AI Engineer</Badge>
-            <h1 className="mt-8 max-w-5xl text-4xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
-              I build production-style systems where the hard parts are not hidden behind the UI.
-            </h1>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-              My work focuses on workers, queues, state machines, control planes, RAG, memory, evals, observability, and deployment.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="/projects" label="View Projects" variant="primary" />
-              <Button href="https://github.com/RitikaxG" label="GitHub" />
-              <Button href="/resume" label="Resume" variant="ghost" />
+      <section id="top" className="px-4 py-10 sm:px-8 lg:py-14">
+        <div className="mx-auto max-w-7xl rounded-[2.4rem] border border-white/10 bg-neutral-900/50 p-3 screen-shadow">
+          <div className="flex items-center justify-between border-b border-white/[0.07] px-5 py-4">
+            <div className="flex gap-2">
+              <span className="h-3 w-3 rounded-full bg-white/15" />
+              <span className="h-3 w-3 rounded-full bg-white/12" />
+              <span className="h-3 w-3 rounded-full bg-white/10" />
             </div>
+            <div className="hidden h-8 w-72 rounded-lg border border-white/10 bg-white/[0.07] md:block" />
+            <div className="h-8 w-8 rounded-full border border-white/10 bg-white/[0.06]" />
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-5 shadow-2xl shadow-cyan-950/30 backdrop-blur">
-            <div className="rounded-2xl border border-white/10 bg-slate-950/80 p-5">
-              <p className="font-mono text-xs uppercase tracking-[0.24em] text-slate-400">System path</p>
-              {systemPath.map((item, index) => (
-                <div key={item} className="mt-4 flex items-center gap-3">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full border border-cyan-300/30 bg-cyan-300/10 font-mono text-xs text-cyan-100">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-slate-200">{item}</span>
+          <div className="rounded-[2rem] bg-neutral-950/70 px-6 py-14 md:px-12 md:py-20">
+            <div className="flex flex-col gap-12 lg:grid lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+              <div>
+                <div className="flex h-24 w-24 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] font-mono text-2xl font-semibold text-white">
+                  RG
                 </div>
+                <p className="mt-10 font-mono text-xs uppercase tracking-[0.3em] text-neutral-500">
+                  Backend / Platform / Applied AI Engineer
+                </p>
+                <h1 className="mt-5 max-w-5xl text-balance text-5xl font-semibold tracking-[-0.06em] text-white sm:text-7xl lg:text-8xl">
+                  I build complete systems, not isolated demos.
+                </h1>
+                <p className="mt-7 max-w-3xl text-lg leading-8 text-neutral-400">
+                  I am Ritika Gupta. My portfolio is built around production-style systems: governed AI workflows, Go worker platforms, Kubernetes GitOps deployment, and cloud workspace control planes.
+                </p>
+                <div className="mt-9 flex flex-wrap gap-3">
+                  <Button href="#projects" label="View Projects" variant="primary" />
+                  <Button href="https://github.com/RitikaxG" label="GitHub" />
+                  <Button href="#resume" label="Resume" variant="secondary" />
+                </div>
+              </div>
+
+              <div className="soft-card rounded-[2rem] p-5">
+                <p className="font-mono text-xs uppercase tracking-[0.28em] text-neutral-500">System path</p>
+                <div className="mt-5 space-y-3">
+                  {systemPath.map((item, index) => (
+                    <div key={item} className="flex items-center gap-3 rounded-2xl border border-white/[0.07] bg-white/[0.035] p-4">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-neutral-950 font-mono text-xs text-neutral-300">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span className="text-sm font-medium text-neutral-200">{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-5 text-sm leading-6 text-neutral-500">
+                  The visual language of the site is intentionally closer to an engineering dashboard than a personal landing page.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" className="px-5 py-16 sm:px-8">
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <SectionHeading
+            eyebrow="About"
+            title="I use projects as proof-of-work."
+            copy="My learning path moved from frontend development into backend architecture, deployment, Go systems, DevOps/GitOps, cloud control planes, and applied AI workflows."
+          />
+          <div className="soft-card rounded-[2rem] p-6 md:p-8">
+            <p className="text-lg leading-8 text-neutral-300">
+              Each project is built to explore real production concerns: state, reliability, background processing, infrastructure, observability, evaluation, and human-in-the-loop workflows. The goal of this portfolio is to make those engineering decisions inspectable.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {strengths.map((strength) => (
+                <Badge key={strength}>{strength}</Badge>
               ))}
             </div>
           </div>
@@ -61,11 +117,37 @@ export default function Home() {
       <section className="px-5 py-16 sm:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
-            eyebrow="Proof of work"
-            title="Three systems, three engineering layers"
-            copy="The portfolio is built around complete systems: applied AI reliability, backend/platform architecture, and cloud runtime orchestration."
+            eyebrow="What I can offer"
+            title="Engineering depth across backend, platform, and applied AI."
+            copy="The portfolio is organized around three complete systems, each proving a different layer of engineering depth."
           />
-          <div className="mt-8 grid gap-5">
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {offers.map((offer) => (
+              <article key={offer.title} className="soft-card rounded-[2rem] p-6 md:p-8">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.055] font-mono text-sm text-neutral-300">
+                  {offer.title.slice(0, 2)}
+                </div>
+                <h3 className="mt-8 text-2xl font-semibold text-white">{offer.title}</h3>
+                <p className="mt-4 text-sm leading-7 text-neutral-400">{offer.copy}</p>
+                <ul className="mt-6 space-y-2">
+                  {offer.points.map((point) => (
+                    <li key={point} className="text-sm text-neutral-300">• {point}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" className="px-5 py-16 sm:px-8">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeading
+            eyebrow="Proof of work"
+            title="Featured systems"
+            copy="These projects are built as systems, not isolated demos. Start with ClaimFlow AI, then inspect RunState and SpinUp."
+          />
+          <div className="mt-10 grid gap-5">
             {projects.map((project, index) => (
               <ProjectCard key={project.slug} project={project} index={index} />
             ))}
@@ -73,38 +155,38 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-5 py-16 sm:px-8">
+      <section id="journals" className="px-5 py-16 sm:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
-            eyebrow="Systems skills map"
-            title="The engineering areas my projects prove"
-            copy="The site is intentionally content-heavy so recruiters and interviewers can inspect real implementation depth quickly."
+            eyebrow="Engineering journals"
+            title="Raw engineering trail behind the systems"
+            copy="These journals are positioned as proof-of-work: implementation decisions, debugging steps, architecture evolution, deployment work, and lessons learned."
           />
-          <div className="mt-8 flex flex-wrap gap-2">
-            {skills.map((skill) => (
-              <span key={skill} className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-slate-200">
-                {skill}
-              </span>
+          <div className="mt-10 grid gap-5 md:grid-cols-2">
+            {journals.map((journal) => (
+              <article key={journal.title} className="soft-card rounded-[2rem] p-6">
+                <p className="font-mono text-xs uppercase tracking-[0.24em] text-neutral-500">Raw engineering journal</p>
+                <h3 className="mt-4 text-2xl font-semibold text-white">{journal.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-neutral-400">{journal.scope}</p>
+                <p className="mt-5 text-sm text-neutral-600">Link placeholder</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="px-5 py-16 sm:px-8">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading
-            eyebrow="Engineering journals"
-            title="Raw engineering trail behind the systems"
-            copy="These journals will link implementation decisions, debugging steps, architecture evolution, deployment work, and lessons learned."
-          />
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {journals.map((journal) => (
-              <div key={journal.title} className="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
-                <p className="font-mono text-xs uppercase tracking-[0.22em] text-amber-200">Raw engineering journal</p>
-                <h3 className="mt-4 text-xl font-semibold text-white">{journal.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-300">{journal.scope}</p>
-              </div>
-            ))}
+      <section id="resume" className="px-5 py-16 sm:px-8 lg:pb-28">
+        <div className="mx-auto max-w-7xl rounded-[2rem] border border-white/10 bg-white/[0.045] p-6 md:p-10">
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-neutral-500">Resume</p>
+          <h2 className="mt-4 max-w-5xl text-3xl font-semibold tracking-tight text-white md:text-5xl">
+            Target roles: Backend Engineer · Platform Engineer · Applied AI Engineer · AI Systems Engineer
+          </h2>
+          <p className="mt-5 max-w-3xl text-base leading-8 text-neutral-400">
+            The resume page is intentionally folded into this one-page portfolio. Next polish pass will add the final PDF download and replace placeholder proof links with screenshots, diagrams, demo videos, and journal URLs.
+          </p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <Button href="mailto:ritikag5533@gmail.com" label="Contact" variant="primary" />
+            <Button href="https://github.com/RitikaxG" label="GitHub" />
           </div>
         </div>
       </section>
