@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,16 +14,16 @@ const geistMono = Geist_Mono({
 });
 
 const navItems = [
-  { label: "Projects", href: "/#projects" },
-  { label: "Journals", href: "/#journals" },
-  { label: "About", href: "/#about" },
-  { label: "Resume", href: "/#resume" },
+  { label: "Projects", href: "/projects" },
+  { label: "Engineering Journals", href: "/journals" },
+  { label: "About", href: "/about" },
+  { label: "Resume", href: "/resume" },
 ];
 
 export const metadata: Metadata = {
   title: "Ritika Gupta | Backend / Platform / Applied AI Engineer",
   description:
-    "Portfolio covering backend architecture, cloud infrastructure, GitOps, and governed AI workflows.",
+    "Production-style systems portfolio covering backend architecture, cloud infrastructure, GitOps, and governed AI workflows.",
 };
 
 export default function RootLayout({
@@ -36,25 +37,25 @@ export default function RootLayout({
         <div className="min-h-screen overflow-hidden bg-slate-950 text-slate-100">
           <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
             <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
-              <a href="/" className="flex items-center gap-3">
+              <Link href="/" className="flex items-center gap-3">
                 <span className="flex h-9 w-9 items-center justify-center rounded-2xl border border-cyan-300/30 bg-cyan-300/10 font-mono text-sm font-semibold text-cyan-200">
                   RG
                 </span>
-                <span className="hidden text-sm font-semibold tracking-wide text-white sm:block">
-                  Ritika Gupta
-                </span>
-              </a>
+                <span className="hidden text-sm font-semibold tracking-wide text-white sm:block">Ritika Gupta</span>
+              </Link>
+
               <div className="hidden items-center gap-1 md:flex">
                 {navItems.map((item) => (
-                  <a
+                  <Link
                     key={item.href}
                     href={item.href}
                     className="rounded-full px-4 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
+
               <a
                 href="https://github.com/RitikaxG"
                 target="_blank"
