@@ -1,5 +1,6 @@
 import { projects } from "@/content/projects";
 import { journals } from "@/content/journals";
+import { resumeConfig } from "@/content/resume";
 import { ProjectCard } from "@/components/projects/ProjectCard";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -179,13 +180,19 @@ export default function Home() {
         <div className="mx-auto max-w-7xl rounded-[2rem] border border-white/10 bg-white/[0.045] p-6 md:p-10">
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-neutral-500">Resume</p>
           <h2 className="mt-4 max-w-5xl text-3xl font-semibold tracking-tight text-white md:text-5xl">
-            Target roles: Backend Engineer · Platform Engineer · Applied AI Engineer · AI Systems Engineer
+            Target roles: {resumeConfig.targetRoles.join(" · ")}
           </h2>
           <p className="mt-5 max-w-3xl text-base leading-8 text-neutral-400">
-            The resume page is intentionally folded into this one-page portfolio. Next polish pass will add the final PDF download and replace placeholder proof links with screenshots, diagrams, demo videos, and journal URLs.
+            The resume section is folded into the one-page portfolio so hiring context stays close to the project proof. The final PDF download will be enabled after the resume file is uploaded.
           </p>
+          {!resumeConfig.isAvailable ? (
+            <p className="mt-4 max-w-3xl rounded-2xl border border-white/10 bg-neutral-950/60 p-4 text-sm leading-6 text-neutral-500">
+              {resumeConfig.note}
+            </p>
+          ) : null}
           <div className="mt-7 flex flex-wrap gap-3">
-            <Button href="mailto:ritikag5533@gmail.com" label="Contact" variant="primary" />
+            {resumeConfig.isAvailable ? <Button href={resumeConfig.pdfPath} label="Download Resume" variant="primary" /> : null}
+            <Button href="mailto:ritikag5533@gmail.com" label="Contact" variant={resumeConfig.isAvailable ? "secondary" : "primary"} />
             <Button href="https://github.com/RitikaxG" label="GitHub" />
           </div>
         </div>
